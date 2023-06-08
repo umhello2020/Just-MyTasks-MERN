@@ -13,6 +13,7 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import TaskPage from './pages/TaskPage';
 import Profile from './pages/Profile';
+import Donation from './pages/Donation';
 import SuccessPage from './pages/SuccessPage';
 import CancelPage from './pages/CancelPage';
 import Nav from './components/Nav';
