@@ -6,7 +6,8 @@ import TaskForm from '../components/TaskForm';
 import TaskList from '../components/TaskList';
 import UpdateUser from '../components/UpdateUser';
 
-import { GET_ME, GET_TASKS, UPDATE_USER } from '../utils/queries';
+import { GET_ME, GET_TASKS } from '../utils/queries';
+import { UPDATE_USER } from '../utils/mutations';
 
 import Auth from '../utils/auth';
 

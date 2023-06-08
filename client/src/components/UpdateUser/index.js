@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useMutation } from '@apollo/client';
-import { UPDATE_USER } from 'path/to/graphql/mutations';
+import { UPDATE_USER } from '../../utils/mutations';
 
 const UpdateUser = () => {
   const [formState, setFormState] = useState({
