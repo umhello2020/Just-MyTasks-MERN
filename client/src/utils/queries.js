@@ -1,14 +1,16 @@
 import { gql } from '@apollo/client';
 
 export const GET_TASK = gql`
-  query getTask($taskId: ID!) {
-    task(_id: $taskId) {
+  query getTask($_id: ID!) {
+    task(_id: $_id) {
       _id
       title
       description
       completed
       user {
         _id
+        username
+        email
       }
     }
   }
@@ -23,6 +25,8 @@ export const GET_TASKS = gql`
       completed
       user {
         _id
+        username
+        email
       }
     }
   }
@@ -45,12 +49,14 @@ export const GET_ME = gql`
 `;
 
 export const GET_DONATION = gql`
-  query getDonation($donationId: ID!) {
-    donation(_id: $donationId) {
+  query getDonation($_id: ID!) {
+    donation(_id: $_id) {
       _id
       amount
       user {
         _id
+        username
+        email
       }
     }
   }

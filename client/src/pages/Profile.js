@@ -1,0 +1,67 @@
+import React from 'react';
+import { Navigate, useParams } from 'react-router-dom';
+import { useQuery, useMutation } from '@apollo/client';
+
+import TaskForm from '../components/TaskForm';
+import TaskList from '../components/TaskList';
+import UpdateUser from '../components/UpdateUser';
+
+import { GET_ME, GET_TASKS, UPDATE_USER } from '../utils/queries';
+
+import Auth from '../utils/auth';
+
+const Profile = () => {
+  const { username: userParam } = useParams();
+
+  const { loading, data } = useQuery(userParam ? GET_TASKS : GET_ME, {
+    variables: { username: userParam },
+  });
+
+  const [updateUser] = useMutation(UPDATE_USER);
+
+  const user = data?.me || data?.tasks || {};
+  // navigate to personal profile page if username is yours
+  if (Auth.loggedIn() && Auth.getProfile().username === userParam) {
+    return <Navigate to="/me" />;
+  }
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!user.username) {
+    return (
+      <h4>
+        You need to be logged in to see this. Use the navigation links above to
+        sign up or log in!
+      </h4>
+    );
+  }
+
+  return (
+    <div>
+      <div className="profile-container">
+        <h2 className="profile-title">
+          Viewing {userParam ? `${user.username}'s` : 'your'} profile.
+        </h2>
+
+        <div className="col-12 col-md-10 mb-5">
+          <TaskList
+            tasks={user.tasks}
+            title={`${user.username}'s tasks`}
+            showTitle={false}
+            showUsername={false}
+          />
+        </div>
+        {!userParam && (
+          <div className="profile-form-container">
+            <TaskForm />
+            <UpdateUser updateUser={updateUser} />
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default Profile;
