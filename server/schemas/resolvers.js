@@ -21,7 +21,10 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
     donation: async (parent, { _id }) => {
-      return Donation.findById(_id);
+      if (context.user) {
+        return Donation.findById(_id);
+       }
+       throw new AuthenticationError('You need to be logged in!');
     },
   },
   Mutation: {
@@ -30,11 +33,11 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    updateUser: async (parent, { username, email, password }, context) => {
+    updateUser: async (parent, { username, email }, context) => {
       if (context.user) {
         return User.findByIdAndUpdate(
           context.user._id,
-          { username, email, password },
+          { username, email },
           { new: true }
         );
       }
@@ -57,11 +60,12 @@ const resolvers = {
 
       return { token, user };
     },
-    createTask: async (parent, { title, description }, context) => {
+    createTask: async (parent, { title, description, completed }, context) => {
       if (context.user) {
         const task = await Task.create({
           title,
           description,
+          completed,
           user: context.user._id,
         });
 

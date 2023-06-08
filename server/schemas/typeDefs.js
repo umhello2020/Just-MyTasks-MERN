@@ -36,13 +36,13 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    login(username: String!, password: String!): Auth
+    login(email: String!, password: String!): Auth
     createUser(username: String!, email: String!, password: String!): Auth
-    updateUser(username: String, email: String, password: String): User
-    createTask(title: String!, description: String!): Task
+    updateUser(username: String, email: String): User
+    createTask(title: String!, description: String!, completed: Boolean!): Task
     updateTask(_id: ID!, title: String, description: String, completed: Boolean): Task
     deleteTask(_id: ID!): Task
-    createDonation(amount: Float!): Donation
+    createDonation(_id: ID!, amount: Float!): Donation
   }
 `;
 
