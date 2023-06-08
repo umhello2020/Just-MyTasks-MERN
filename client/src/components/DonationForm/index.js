@@ -3,6 +3,7 @@ import { useMutation } from '@apollo/client';
 import { CREATE_DONATION } from '../../utils/mutations';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
+import './DonationForm.css';
 
 const stripePromise = loadStripe('pk_test_51NGbpyFI0y2ABPrPARBz7vhNTai1DgUY1wxtEYqyuDW2FvOPY7Y5tOT3N1wuiFuQW4W0o7QTvyU8qR2pU0hGEoyA00pYv6wdj6');
 

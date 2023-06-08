@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import './Footer.module.css';
 
 const Footer = () => {
   const location = useLocation();
