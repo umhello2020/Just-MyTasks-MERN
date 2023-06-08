@@ -12,27 +12,28 @@ const typeDefs = gql`
     email: String!
     password: String!
     tasks: [Task]
+    donations: [Donation]
   }
 
   type Task {
     _id: ID!
     title: String!
-    description: String
-    completed: Boolean
-    user: User
+    description: String!
+    completed: Boolean!
+    user: User!
   }
 
   type Donation {
     _id: ID!
     amount: Float!
-    user: User
+    user: User!
   }
 
   type Query {
     task(_id: ID!): Task
     tasks: [Task]
     me: User
-    donation: Donation 
+    donation(_id: ID!): Donation
   }
 
   type Mutation {
@@ -42,9 +43,8 @@ const typeDefs = gql`
     createTask(title: String!, description: String!, completed: Boolean!): Task
     updateTask(_id: ID!, title: String, description: String, completed: Boolean): Task
     deleteTask(_id: ID!): Task
-    createDonation(_id: ID!, amount: Float!): Donation
+    createDonation(amount: Float!): Donation
   }
 `;
 
 module.exports = typeDefs;
-
