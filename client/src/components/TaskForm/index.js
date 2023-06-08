@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
-import { CREATE_TASK } from '../utils/mutations';
-import { GET_TASKS, GET_ME } from '../utils/queries';
+import { CREATE_TASK } from '../../utils/mutations';
+import { GET_TASKS, GET_ME } from '../../utils/queries';
 
 const TaskForm = () => {
   const [taskTitle, setTaskTitle] = useState('');
