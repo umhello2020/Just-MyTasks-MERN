@@ -3,7 +3,7 @@ import { useMutation } from '@apollo/client';
 import { CREATE_DONATION } from '../../utils/mutations';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
-import './DonationForm.css';
+import './DonationForm.module.css';
 
 const stripePromise = loadStripe('pk_test_51NGbpyFI0y2ABPrPARBz7vhNTai1DgUY1wxtEYqyuDW2FvOPY7Y5tOT3N1wuiFuQW4W0o7QTvyU8qR2pU0hGEoyA00pYv6wdj6');
 
@@ -64,7 +64,6 @@ const DonationFormWithStripe = () => {
 
   return (
     <div className="donation-form">
-      <h3 className="donation-form-title">Donation Form</h3>
       <form className="donation-form-form" onSubmit={handleFormSubmit}>
         <input
           className="donation-form-input"

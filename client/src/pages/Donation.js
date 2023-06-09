@@ -24,13 +24,16 @@ const Donation = () => {
     <div className="donation-page">
       <h2 className="donation-page-title">Donation Details</h2>
       <p className="donation-page-info">Amount: {donation.amount}</p>
-      <p className="donation-page-info">User ID: {donation.user._id}</p>
-      <p className="donation-page-info">Username: {donation.user.username}</p>
-      <p className="donation-page-info">Email: {donation.user.email}</p>
+      {donation.user && (
+        <>
+          <p className="donation-page-info">User ID: {donation.user._id}</p>
+          <p className="donation-page-info">Username: {donation.user.username}</p>
+          <p className="donation-page-info">Email: {donation.user.email}</p>
+        </>
+      )}
 
       <h3 className="donation-page-form-title">Donation Form</h3>
       <DonationForm />
-
     </div>
   );
 };
