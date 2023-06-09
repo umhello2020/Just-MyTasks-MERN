@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { CREATE_USER } from '../utils/mutations';
 
+import './Signup.module.css';
+
 import Auth from '../utils/auth';
 
 const Signup = () => {
