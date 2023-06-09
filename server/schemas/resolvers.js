@@ -8,13 +8,15 @@ const resolvers = {
     getTask: async (parent, { taskId }) => {
       return Task.findById(taskId);
     },
-    getTasks: async (parent, { username }, context) => {
+    getTasks: async (parent, args, context) => {
       if (context.user) {
-        const query = username ? { username } : {};
-        return Task.find(query);
+        const { username } = context.user;
+        const query = username ? { user: username } : {};
+        return Task.find(query).populate('user');
       }
       throw new AuthenticationError('You need to be logged in!');
     },
+    
     getMe: async (parent, args, context) => {
       if (context.user) {
         return User.findById(context.user._id).populate('tasks');

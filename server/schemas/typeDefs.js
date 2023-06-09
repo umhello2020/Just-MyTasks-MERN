@@ -30,7 +30,7 @@ const typeDefs = gql`
 
   type Query {
     getTask(taskId: ID!): Task
-    getTasks(username: String): [Task]
+    getTasks: [Task]
     getMe: User
     getDonation(_id: ID!): Donation
   }
