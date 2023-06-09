@@ -5,6 +5,8 @@ import { useQuery } from '@apollo/client';
 import { GET_DONATION } from '../utils/queries';
 import DonationForm from '../components/DonationForm';
 
+import './Donation.module.css';
+
 const Donation = () => {
   const { donationId } = useParams();
 
