@@ -1,0 +1,35 @@
+/* The container holding the success message */
+div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f6f6f6;
+  }
+  
+  /* The success message title */
+  h2 {
+    font-size: 32px;
+    color: #4CAF50; /* You can replace this with your own green color for success */
+    margin-bottom: 20px;
+  }
+  
+  /* The success message description */
+  p {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 30px;
+  }
+  
+  /* The link to the home page */
+  a {
+    font-size: 16px;
+    color: #007BFF; /* You can replace this with your own blue color for links */
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
