@@ -1,0 +1,17 @@
+.home-container {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+  }
+  
+  .task-form-container {
+    flex: 1;
+    padding: 20px;
+    border-right: 1px solid #ddd;
+  }
+  
+  .task-list-container {
+    flex: 2;
+    padding: 20px;
+  }
+  
