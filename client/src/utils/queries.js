@@ -17,8 +17,8 @@ export const GET_TASK = gql`
 `;
 
 export const GET_TASKS = gql`
-  query getTasks($username: String) {
-    tasks(username: $username) {
+  query getTasks {
+    tasks {
       _id
       title
       description
@@ -31,6 +31,7 @@ export const GET_TASKS = gql`
     }
   }
 `;
+
 
 
 export const GET_ME = gql`

@@ -17,9 +17,6 @@ const Nav = () => {
           <Link className={styles['nav-link']} to="/donation">
             Donation
           </Link>
-          <Link className={styles['nav-link']} to="/task">
-            Task
-          </Link>
           <Link className={styles['nav-link']} to="/me">
             {Auth.getProfile().data.username}'s Profile
           </Link>
