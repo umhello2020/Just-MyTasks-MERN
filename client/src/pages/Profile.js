@@ -6,6 +6,8 @@ import TaskForm from '../components/TaskForm';
 import TaskList from '../components/TaskList';
 import UpdateUser from '../components/UpdateUser';
 
+import './Profile.module.css';
+
 import { GET_ME, GET_TASKS } from '../utils/queries';
 import { UPDATE_USER } from '../utils/mutations';
 
