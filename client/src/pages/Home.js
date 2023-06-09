@@ -6,6 +6,8 @@ import TaskForm from '../components/TaskForm';
 
 import { GET_TASKS } from '../utils/queries';
 
+import './Home.module.css';
+
 const Home = () => {
   const { loading, data } = useQuery(GET_TASKS);
   const tasks = data?.tasks || [];
