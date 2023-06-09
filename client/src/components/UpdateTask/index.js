@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { UPDATE_TASK, DELETE_TASK } from '../../utils/mutations';
+import './UpdateTask.module.css';
 
 const UpdateTask = ({ taskId }) => {
   const [formState, setFormState] = useState({

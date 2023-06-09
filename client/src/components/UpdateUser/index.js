@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { UPDATE_USER } from '../../utils/mutations';
+import './UpdateUser.module.css';
 
 const UpdateUser = () => {
   const [formState, setFormState] = useState({
