@@ -2,6 +2,9 @@
 
 Deployed Link - https://just-mytasks-mern.herokuapp.com/
 
+![image](https://github.com/umhello2020/Just-MyTasks-MERN/assets/119268105/39eb2994-1680-40d9-a1f7-09eeb99a2cc7)
+
+
 MyTasks is a web application that allows users to manage their tasks and donations. Users can create, update, and delete tasks, as well as make donations to support their favorite causes.
 
 ## Features
