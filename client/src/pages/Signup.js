@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { CREATE_USER } from '../utils/mutations';
 
-import './Signup.module.css';
+import styles from './Signup.module.css';
 
 import Auth from '../utils/auth';
 
@@ -41,11 +41,11 @@ const Signup = () => {
   };
 
   return (
-    <main className="signup-page">
-      <div className="signup-container">
-        <div className="signup-card">
-          <h4 className="signup-header">Sign Up</h4>
-          <div className="signup-form">
+    <main className={styles.signupPage}>
+      <div className={styles.signupContainer}>
+        <div className={styles.signupCard}>
+          <h4 className={styles.signupHeader}>Sign Up</h4>
+          <div className={styles.signupForm}>
             {data ? (
               <p>
                 Success! You may now head{' '}
@@ -54,7 +54,7 @@ const Signup = () => {
             ) : (
               <form onSubmit={handleFormSubmit}>
                 <input
-                  className="form-input"
+                  className={styles.formInput}
                   placeholder="Your username"
                   name="username"
                   type="text"
@@ -62,7 +62,7 @@ const Signup = () => {
                   onChange={handleChange}
                 />
                 <input
-                  className="form-input"
+                  className={styles.formInput}
                   placeholder="Your email"
                   name="email"
                   type="email"
@@ -70,7 +70,7 @@ const Signup = () => {
                   onChange={handleChange}
                 />
                 <input
-                  className="form-input"
+                  className={styles.formInput}
                   placeholder="******"
                   name="password"
                   type="password"
@@ -78,7 +78,7 @@ const Signup = () => {
                   onChange={handleChange}
                 />
                 <button
-                  className="submit-btn"
+                  className={styles.submitBtn}
                   type="submit"
                 >
                   Submit
@@ -87,7 +87,7 @@ const Signup = () => {
             )}
 
             {error && (
-              <div className="error-message">
+              <div className={styles.errorMessage}>
                 {error.message}
               </div>
             )}
@@ -99,3 +99,4 @@ const Signup = () => {
 };
 
 export default Signup;
+

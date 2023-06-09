@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { UPDATE_USER } from '../../utils/mutations';
-import './UpdateUser.module.css';
+import styles from './UpdateUser.module.css';
 
 const UpdateUser = () => {
   const [formState, setFormState] = useState({
@@ -27,25 +27,25 @@ const UpdateUser = () => {
     })
       .then((response) => {
         // Handle success
-        console.log("User updated successfully", response);
+        console.log('User updated successfully', response);
       })
       .catch((error) => {
         // Handle error
-        console.error("Error updating user", error);
+        console.error('Error updating user', error);
       });
   };
 
   return (
     <div>
-      <h3 className="update-user-title">Update User</h3>
-      <form className="update-user-form" onSubmit={handleFormSubmit}>
+      <h3 className={styles['update-user-title']}>Update User</h3>
+      <form className={styles['update-user-form']} onSubmit={handleFormSubmit}>
         <input
           type="text"
           name="username"
           placeholder="Username"
           value={formState.username}
           onChange={handleChange}
-          className="update-user-input"
+          className={styles['update-user-input']}
         />
         <input
           type="text"
@@ -53,12 +53,15 @@ const UpdateUser = () => {
           placeholder="Email"
           value={formState.email}
           onChange={handleChange}
-          className="update-user-input"
+          className={styles['update-user-input']}
         />
-        <button type="submit" className="submit-btn">Update User</button>
+        <button type="submit" className={styles['submit-btn']}>
+          Update User
+        </button>
       </form>
     </div>
   );
 };
 
 export default UpdateUser;
+

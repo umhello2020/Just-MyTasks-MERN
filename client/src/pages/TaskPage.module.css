@@ -1,19 +1,21 @@
-.successPage {
+.taskPage {
     text-align: center;
   }
   
-  .successTitle {
+  .taskPageTitle {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 16px;
   }
   
-  .successMessage {
+  .taskPageInfo {
     font-size: 18px;
     margin-bottom: 16px;
   }
   
-  .successLink {
-    font-size: 16px;
+  .taskPageUpdateTitle {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 16px;
   }
   

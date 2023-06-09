@@ -6,7 +6,7 @@ import TaskForm from '../components/TaskForm';
 
 import { GET_TASKS } from '../utils/queries';
 
-import './Home.module.css';
+import styles from './Home.module.css';
 
 const Home = () => {
   const { loading, data } = useQuery(GET_TASKS);
@@ -14,17 +14,18 @@ const Home = () => {
 
   return (
     <main>
-      <div className="home-container">
-        <div className="task-form-container">
+      <div className={styles.homeContainer}>
+        <div className={styles.taskFormContainer}>
           <TaskForm />
         </div>
-        <div className="task-list-container">
+        <div className={styles.taskListContainer}>
           {loading ? (
             <div>Loading...</div>
           ) : (
             <TaskList
               tasks={tasks}
               title="Here are your tasks"
+              showTitle={true}
             />
           )}
         </div>
@@ -34,3 +35,4 @@ const Home = () => {
 };
 
 export default Home;
+

@@ -1,14 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import styles from './CancelPage.module.css';
 
 const CancelPage = () => {
   return (
-    <div>
-      <h2>Payment Cancelled</h2>
+    <div className={styles['cancel-page']}>
+      <h2 className={styles['cancel-page-title']}>Payment Cancelled</h2>
       <p>Your donation was cancelled.</p>
-      <Link to="/">Go back to home page</Link>
+      <Link to="/" className={styles['cancel-page-link']}>
+        Go back to home page
+      </Link>
     </div>
   );
 };
 
 export default CancelPage;
+

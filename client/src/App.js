@@ -18,6 +18,7 @@ import SuccessPage from './pages/SuccessPage';
 import CancelPage from './pages/CancelPage';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
+import './App.css'
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({

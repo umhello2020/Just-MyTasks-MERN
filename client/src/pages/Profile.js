@@ -6,7 +6,7 @@ import TaskForm from '../components/TaskForm';
 import TaskList from '../components/TaskList';
 import UpdateUser from '../components/UpdateUser';
 
-import './Profile.module.css';
+import styles from './Profile.module.css';
 
 import { GET_ME, GET_TASKS } from '../utils/queries';
 import { UPDATE_USER } from '../utils/mutations';
@@ -38,12 +38,12 @@ const Profile = () => {
 
   return (
     <div>
-      <div className="profile-container">
-        <h2 className="profile-title">
+      <div className={styles.profileContainer}>
+        <h2 className={styles.profileTitle}>
           Viewing {userParam ? `${user.username}'s` : 'your'} profile.
         </h2>
 
-        <div className="task-list-container">
+        <div className={styles.taskListContainer}>
           <TaskList
             tasks={user.tasks}
             title={`${user.username}'s tasks`}
@@ -52,7 +52,7 @@ const Profile = () => {
           />
         </div>
         {!userParam && (
-          <div className="profile-form-container">
+          <div className={styles.profileFormContainer}>
             <TaskForm />
             <UpdateUser updateUser={updateUser} />
           </div>
