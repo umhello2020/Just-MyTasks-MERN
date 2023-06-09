@@ -5,28 +5,32 @@ const stripe = require('stripe')('sk_test_51NGbpyFI0y2ABPrPNcScnoEO6SEwUw6KN3Tch
 
 const resolvers = {
   Query: {
-    task: async (parent, { _id }) => {
-      return Task.findById(_id);
+    getTask: async (parent, { taskId }) => {
+      return Task.findById(taskId);
     },
-    tasks: async (parent, args, context) => {
+    getTasks: async (parent, { username }, context) => {
       if (context.user) {
-        return Task.find({ user: context.user._id });
+        const query = username ? { username } : {};
+        return Task.find(query);
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    me: async (parent, args, context) => {
+    getMe: async (parent, args, context) => {
       if (context.user) {
         return User.findById(context.user._id).populate('tasks');
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    donation: async (parent, { _id }, context) => {
+    getDonation: async (parent, { _id }, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id, 'donations._id': _id }, { 'donations.$': 1 });
+        return User.findOne(
+          { _id: context.user._id, 'donations._id': _id },
+          { 'donations.$': 1 }
+        );
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-  },
+  },  
   Mutation: {
     createUser: async (parent, { username, email, password }) => {
       const user = await User.create({ username, email, password });
@@ -60,23 +64,27 @@ const resolvers = {
 
       return { token, user };
     },
-    createTask: async (parent, { title, description, completed }, context) => {
-      if (context.user) {
-        const task = await Task.create({
-          title,
-          description,
-          completed,
-          user: context.user._id,
-        });
+    // Server-side mutation resolver
+createTask: async (parent, { title, description, completed }, context) => {
+  if (context.user) {
+    const task = await Task.create({
+      title,
+      description,
+      completed,
+      user: context.user._id,
+    });
 
-        await User.findByIdAndUpdate(context.user._id, {
-          $push: { tasks: task._id },
-        });
+    await User.findOneAndUpdate(
+      { _id: context.user._id },
+      { $addToSet: { tasks: task._id } }
+    );
 
-        return task;
-      }
-      throw new AuthenticationError('You need to be logged in to create a task');
-    },
+    return task;
+  }
+
+  throw new AuthenticationError('You need to be logged in to create a task');
+},
+  
     updateTask: async (parent, { taskId, title, description, completed }, context) => {
       if (context.user) {
         const update = { title, description, completed };

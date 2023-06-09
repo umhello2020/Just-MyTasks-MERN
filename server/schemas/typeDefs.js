@@ -10,7 +10,6 @@ const typeDefs = gql`
     _id: ID!
     username: String!
     email: String!
-    password: String!
     tasks: [Task]
     donations: [Donation]
   }
@@ -30,10 +29,10 @@ const typeDefs = gql`
   }
 
   type Query {
-    task(taskId: ID!): Task
-    tasks(username: String): [Task]
-    me: User
-    donation(_id: ID!): Donation
+    getTask(taskId: ID!): Task
+    getTasks(username: String): [Task]
+    getMe: User
+    getDonation(_id: ID!): Donation
   }
 
   type Mutation {

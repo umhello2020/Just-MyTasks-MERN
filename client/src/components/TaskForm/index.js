@@ -11,23 +11,30 @@ const TaskForm = () => {
   const [createTask, { error }] = useMutation(CREATE_TASK, {
     update(cache, { data: { createTask } }) {
       try {
-        const { tasks } = cache.readQuery({ query: GET_TASKS });
-
+        const { tasks } = cache.readQuery({ query: GET_TASKS, variables: { username: null } });
+  
         cache.writeQuery({
           query: GET_TASKS,
+          variables: { username: null },
           data: { tasks: [createTask, ...tasks] },
         });
       } catch (e) {
         console.error(e);
       }
-
-      const { me } = cache.readQuery({ query: GET_ME });
-      cache.writeQuery({
-        query: GET_ME,
-        data: { me: { ...me, tasks: [...me.tasks, createTask] } },
-      });
+  
+      try {
+        const { me } = cache.readQuery({ query: GET_ME });
+  
+        cache.writeQuery({
+          query: GET_ME,
+          data: { me: { ...me, tasks: [...me.tasks, createTask] } },
+        });
+      } catch (e) {
+        console.error(e);
+      }
     },
   });
+  
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
