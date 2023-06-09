@@ -24,7 +24,8 @@ const Profile = () => {
 
   const [updateUser] = useMutation(UPDATE_USER);
 
-  const user = data?.me || data?.tasks || {};
+  const user = userParam ? data?.tasks : data?.me || {};
+
   // navigate to personal profile page if username is yours
   if (Auth.loggedIn() && Auth.getProfile().username === userParam) {
     return <Navigate to="/me" />;
@@ -33,8 +34,6 @@ const Profile = () => {
   if (loading) {
     return <div>Loading...</div>;
   }
-
-  console.log('User:', user);
 
   return (
     <div>
@@ -60,7 +59,6 @@ const Profile = () => {
       </div>
     </div>
   );
-  
 };
 
 export default Profile;

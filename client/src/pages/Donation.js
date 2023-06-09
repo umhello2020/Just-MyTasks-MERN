@@ -21,12 +21,16 @@ const Donation = () => {
   }
 
   return (
-    <div className={styles.donationPage}>
-      <h2 className={styles.donationPageTitle}>Donation Details</h2>
-      <p className={styles.donationPageInfo}>Amount: {donation.amount}</p>
-      <p className={styles.donationPageInfo}>User ID: {donation.user._id}</p>
-      <p className={styles.donationPageInfo}>Username: {donation.user.username}</p>
-      <p className={styles.donationPageInfo}>Email: {donation.user.email}</p>
+    <div className="donation-page">
+      <h2 className="donation-page-title">Donation Details</h2>
+      <p className="donation-page-info">Amount: {donation.amount}</p>
+      {donation.user && (
+        <>
+          <p className="donation-page-info">User ID: {donation.user._id}</p>
+          <p className="donation-page-info">Username: {donation.user.username}</p>
+          <p className="donation-page-info">Email: {donation.user.email}</p>
+        </>
+      )}
 
       <h3 className={styles.donationPageFormTitle}>Donation Form</h3>
       <DonationForm />
