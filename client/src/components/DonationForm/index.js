@@ -87,4 +87,3 @@ const DonationForm = () => (
 );
 
 export default DonationForm;
-

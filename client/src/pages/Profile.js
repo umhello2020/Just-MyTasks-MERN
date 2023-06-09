@@ -14,6 +14,8 @@ import { UPDATE_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
 
 const Profile = () => {
+  console.log('Rendering Profile Page');
+  
   const { username: userParam } = useParams();
 
   const { loading, data } = useQuery(userParam ? GET_TASKS : GET_ME, {
@@ -31,6 +33,8 @@ const Profile = () => {
   if (loading) {
     return <div>Loading...</div>;
   }
+
+  console.log('User:', user);
 
   return (
     <div>
@@ -56,6 +60,7 @@ const Profile = () => {
       </div>
     </div>
   );
+  
 };
 
 export default Profile;

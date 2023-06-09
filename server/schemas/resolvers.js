@@ -20,11 +20,11 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    donation: async (parent, { _id }) => {
+    donation: async (parent, { _id }, context) => {
       if (context.user) {
-        return Donation.findById(_id);
-       }
-       throw new AuthenticationError('You need to be logged in!');
+        return User.findOne({ _id: context.user._id, 'donations._id': _id }, { 'donations.$': 1 });
+      }
+      throw new AuthenticationError('You need to be logged in!');
     },
   },
   Mutation: {
@@ -103,12 +103,14 @@ const resolvers = {
         throw new AuthenticationError('You need to be logged in to create a donation');
       }
 
-      const donation = new Donation({
+      const donation = {
         amount,
         user: context.user._id,
-      });
+      };
 
-      await donation.save();
+      await User.findByIdAndUpdate(context.user._id, {
+        $push: { donations: donation },
+      });
 
       const paymentIntent = await stripe.paymentIntents.create({
         amount: Math.round(amount * 100), // Stripe requires amount in cents
