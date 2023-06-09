@@ -1,0 +1,21 @@
+.cancel-page {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .cancel-page-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .cancel-page-link {
+    display: inline-block;
+    margin-top: 20px;
+    color: blue;
+    text-decoration: underline;
+  }
+  
+  .cancel-page-link:hover {
+    color: darkblue;
+  }
+ 

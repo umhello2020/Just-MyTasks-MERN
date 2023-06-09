@@ -1,16 +1,17 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import './Footer.module.css';
+import styles from './Footer.module.css';
 
 const Footer = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  
   return (
-    <footer className="footer">
-      <div className="footer-content">
+    <footer className={styles['footer']}>
+      <div className={styles['footer-content']}>
         {location.pathname !== '/' && (
           <button
-            className="back-btn"
+            className={styles['back-btn']}
             onClick={() => navigate(-1)}
           >
             &larr; Go Back
@@ -19,7 +20,7 @@ const Footer = () => {
         <h4>
           Made with{' '}
           <span
-            className="footer-emoji"
+            className={styles['footer-emoji']}
             role="img"
             aria-label="heart"
             aria-hidden="false"
@@ -34,3 +35,4 @@ const Footer = () => {
 };
 
 export default Footer;
+

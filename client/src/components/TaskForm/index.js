@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { CREATE_TASK } from '../../utils/mutations';
 import { GET_TASKS, GET_ME } from '../../utils/queries';
+import styles from './TaskForm.module.css';
 
 const TaskForm = () => {
   const [taskTitle, setTaskTitle] = useState('');
@@ -62,20 +63,20 @@ const TaskForm = () => {
       <h3>Create a New Task</h3>
 
       <form onSubmit={handleFormSubmit}>
-        <div className="form-group">
+        <div className={styles['form-group']}>
           <label htmlFor="taskTitle">Title:</label>
           <input
-            className="form-control"
+            className={styles['form-control']}
             placeholder="Enter a title"
             name="taskTitle"
             value={taskTitle}
             onChange={handleTitleChange}
           />
         </div>
-        <div className="form-group">
+        <div className={styles['form-group']}>
           <label htmlFor="taskDescription">Description:</label>
           <textarea
-            className="form-control"
+            className={styles['form-control']}
             placeholder="Enter a description"
             name="taskDescription"
             value={taskDescription}
@@ -83,13 +84,14 @@ const TaskForm = () => {
           />
         </div>
 
-        <button className="submit-btn" type="submit">
+        <button className={styles['submit-btn']} type="submit">
           Add Task
         </button>
-        {error && <div className="error-message">{error.message}</div>}
+        {error && <div className={styles['error-message']}>{error.message}</div>}
       </form>
     </div>
   );
 };
 
 export default TaskForm;
+

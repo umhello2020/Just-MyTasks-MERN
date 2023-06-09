@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
-import './Login.module.css';
+import styles from './Login.module.css';
 
 import Auth from '../utils/auth';
 
@@ -42,12 +42,12 @@ const Login = (props) => {
   };
 
   return (
-    <main className="login-container">
-      <div className="login-card">
-        <div className="login-header">
-          <h4 className="login-title">Login</h4>
+    <main className={styles.loginContainer}>
+      <div className={styles.loginCard}>
+        <div className={styles.loginHeader}>
+          <h4 className={styles.loginTitle}>Login</h4>
         </div>
-        <div className="login-body">
+        <div className={styles.loginBody}>
           {data ? (
             <p>
               Success! You may now head{' '}
@@ -56,7 +56,7 @@ const Login = (props) => {
           ) : (
             <form onSubmit={handleFormSubmit}>
               <input
-                className="form-input"
+                className={styles.formInput}
                 placeholder="Your email"
                 name="email"
                 type="email"
@@ -64,7 +64,7 @@ const Login = (props) => {
                 onChange={handleChange}
               />
               <input
-                className="form-input"
+                className={styles.formInput}
                 placeholder="******"
                 name="password"
                 type="password"
@@ -72,7 +72,7 @@ const Login = (props) => {
                 onChange={handleChange}
               />
               <button
-                className="submit-btn"
+                className={styles.submitBtn}
                 type="submit"
               >
                 Submit
@@ -81,7 +81,7 @@ const Login = (props) => {
           )}
 
           {error && (
-            <div className="error-message">
+            <div className={styles.errorMessage}>
               {error.message}
             </div>
           )}

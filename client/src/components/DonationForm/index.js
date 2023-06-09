@@ -3,7 +3,7 @@ import { useMutation } from '@apollo/client';
 import { CREATE_DONATION } from '../../utils/mutations';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
-import './DonationForm.css';
+import styles from './DonationForm.module.css';
 
 const stripePromise = loadStripe('pk_test_51NGbpyFI0y2ABPrPARBz7vhNTai1DgUY1wxtEYqyuDW2FvOPY7Y5tOT3N1wuiFuQW4W0o7QTvyU8qR2pU0hGEoyA00pYv6wdj6');
 
@@ -63,18 +63,18 @@ const DonationFormWithStripe = () => {
   };
 
   return (
-    <div className="donation-form">
-      <h3 className="donation-form-title">Donation Form</h3>
-      <form className="donation-form-form" onSubmit={handleFormSubmit}>
+    <div className={styles['donation-form']}>
+      <h3 className={styles['donation-form-title']}>Donation Form</h3>
+      <form className={styles['donation-form-form']} onSubmit={handleFormSubmit}>
         <input
-          className="donation-form-input"
+          className={styles['donation-form-input']}
           type="text"
           name="amount"
           placeholder="Donation Amount"
           value={formState.amount}
           onChange={handleChange}
         />
-        <button className="submit-btn" type="submit">Donate</button>
+        <button className={styles['submit-btn']} type="submit">Donate</button>
       </form>
     </div>
   );
@@ -87,3 +87,4 @@ const DonationForm = () => (
 );
 
 export default DonationForm;
+
