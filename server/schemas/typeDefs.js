@@ -26,12 +26,12 @@ const typeDefs = gql`
   type Donation {
     _id: ID!
     amount: Float!
-    user: User!
+    user: User
   }
 
   type Query {
-    task(_id: ID!): Task
-    tasks: [Task]
+    task(taskId: ID!): Task
+    tasks(username: String): [Task]
     me: User
     donation(_id: ID!): Donation
   }
@@ -41,7 +41,7 @@ const typeDefs = gql`
     createUser(username: String!, email: String!, password: String!): Auth
     updateUser(username: String, email: String): User
     createTask(title: String!, description: String!, completed: Boolean!): Task
-    updateTask(_id: ID!, title: String, description: String, completed: Boolean): Task
+    updateTask(taskId: ID!, title: String, description: String, completed: Boolean): Task
     deleteTask(_id: ID!): Task
     createDonation(amount: Float!): Donation
   }
