@@ -14,7 +14,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.0-placeholder-for-preset-env.2",
-    "concurrently": "^5.1.0"
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.0-placeholder-for-preset-env.2"
+  },
+  "dependencies": {
+    "concurrently": "^8.1.0"
   }
 }
